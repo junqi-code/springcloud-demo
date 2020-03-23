@@ -1,0 +1,45 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+
+server:
+  port: 8080
+
+feign:
+  hystrix:
+    enabled: true
+
+spring:
+  profiles: dev  #测试环境
+  application:
+    name: springcloud-client
+
+eureka:
+  client:
+    register-with-eureka: false  # 当前微服务不注册到eureka中(消费端)
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+
+---
+
+server:
+  port: 8080
+
+feign:
+  hystrix:
+    enabled: true
+
+spring:
+  profiles: test  #测试环境
+  application:
+    name: springcloud-client
+
+eureka:
+  client:
+    register-with-eureka: false  # 当前微服务不注册到eureka中(消费端)
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  
